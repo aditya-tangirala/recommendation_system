@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,23 +16,24 @@ import javax.swing.JTextField;
 
 public class Gui {
 	public int rating[]=new int[10];
-	  public int movid[]=new int[10];
-	  ArrayList<Integer> ratinglist= new ArrayList();
-	  ArrayList<Integer> movidlist= new ArrayList();
-	  public void print()
+	public int movid[]=new int[10];
+	ArrayList<Integer> ratinglist= new ArrayList<>();
+	ArrayList<Integer> movidlist= new ArrayList<>();
+	
+	public void print()
 	{	
 		for(int i=0;i<ratinglist.size();i++)
 		{System.out.println(movidlist.get(i)+",11,"+ratinglist.get(i));
 		}
 	}
-	public Gui()
+
+	public void display()
 	{
 		final JFrame f1 = new JFrame("NETFLIX User Recommendation System");
 		f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel l[]= new JLabel[11];
 		final JLabel mid[]= new JLabel[11];
 		final JTextField tf[]= new JTextField[11];
-		JLabel yr[]=new JLabel[11];
 	
 		JPanel p[]= new JPanel[11];
 		JPanel pmain = new JPanel(new GridLayout(11,1));
@@ -44,8 +44,8 @@ public class Gui {
 		imgpnl.add( label, BorderLayout.CENTER );
 		try
 		{
-		BufferedReader file=new BufferedReader(new FileReader("1.txt"));
-		String s;
+			BufferedReader file = new BufferedReader(new FileReader("1.txt"));
+			String s;
 
 			int i=0;
 			while((s=file.readLine())!=null)
@@ -75,6 +75,8 @@ public class Gui {
 			
 				
 			}
+
+			file.close();
 			
 		}
 		catch(Exception e)
@@ -125,7 +127,7 @@ public class Gui {
 		pmain.setLayout(new GridLayout(10,1,0,0));
 		//f1.setLayout(new FlowLayout(FlowLayout.CENTER,0,20));
 		
-	//	f1.setLayout(new GridLayout(3,1));
+		f1.setLayout(new GridLayout(3,1));
 		f1.add(imgpnl,BorderLayout.NORTH);
 		f1.add(pmain,BorderLayout.CENTER);
 		f1.add(pmain2,BorderLayout.SOUTH);
